@@ -53,13 +53,12 @@ double spectralNorm(n) {
   }
   for (int i = 0; i < n; ++i) {
     vBv += u[i] * v[i];
-    vv  += v[i] * v[i];
+    vv += v[i] * v[i];
   }
   return Math.sqrt(vBv / vv);
 }
 
-void main(args) {
-  int n = args.length > 0 ? int.parse(args[0]) : 100;
+void spectralRun() {
+  int n = 5500;
   print(spectralNorm(n).toStringAsFixed(9));
 }
-    

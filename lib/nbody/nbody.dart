@@ -14,7 +14,7 @@ import 'dart:math' as Math;
 import 'dart:typed_data';
 
 void nbodyRun() {
-  int n = 1000;
+  int n = 500000;
 
   NBodySystem system = NBodySystem();
   print(system.energy().toStringAsFixed(9));

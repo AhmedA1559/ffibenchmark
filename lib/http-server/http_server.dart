@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
 
 final HttpClient _client = new HttpClient();
 
-Future main(List<String> arguments) async {
-  final n = arguments.length > 0 ? int.parse(arguments[0]) : 10;
+Future httpServerRun() async {
+  final n = 10;
   final port = 30000 + Random().nextInt(10000);
   var handler = const Pipeline().addHandler(_handlePostAsync);
   var server = await shelf_io.serve(handler, 'localhost', port)
@@ -22,7 +23,6 @@ Future main(List<String> arguments) async {
   for (Future<int> task in tasks) {
     sum += await task;
   }
-  print(sum);
   await server.close(force: true);
 }
 
